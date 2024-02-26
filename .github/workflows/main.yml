@@ -1,16 +1,23 @@
-name: Trigger Render Deployment
+# .github/workflows/ci.yml
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
 jobs:
-  main:
-    name: Deploy to Render
+  ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger deployment
-        uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
-        with:
-          service-id: srv-cndtmo0l6cac73bh1dc0
-          api-key: rnd_Jk2UXVjsliP376r4blNvD503Cpwp
+      - uses: actions/checkout@v4
+      - name: build
+        run: |
+          npm install
+
+      - name: Deploy
+        # Only run this step if the branch is main
+        if: github.ref == 'refs/heads/main'
+        env:
+          deploy_url: https://api.render.com/deploy/srv-cndtmo0l6cac73bh1dc0?key=04-fCDImG3U
+        run: |
+          curl "$deploy_url"
       
