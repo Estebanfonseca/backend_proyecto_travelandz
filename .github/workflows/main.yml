@@ -1,17 +1,15 @@
-name: My Deploy
-
+name: Trigger Render Deployment
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
-  build:
+  main:
+    name: Deploy to Render
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to production
-        uses: johnbeynon/render-deploy-action@v0.0.8
+      - name: Trigger deployment
+        uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
         with:
           service-id: srv-cndtmo0l6cac73bh1dc0
           api-key: rnd_Jk2UXVjsliP376r4blNvD503Cpwp
