@@ -15,4 +15,4 @@ jobs:
         with:
           service-id: srv-cndtmo0l6cac73bh1dc0
           api-key: rnd_Jk2UXVjsliP376r4blNvD503Cpwp
-          wait-for-success: true
+      
