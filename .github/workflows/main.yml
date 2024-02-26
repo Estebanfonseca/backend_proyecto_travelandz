@@ -1,0 +1,18 @@
+name: My Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: srv-cndtmo0l6cac73bh1dc0
+          api-key: rnd_Jk2UXVjsliP376r4blNvD503Cpwp
+          wait-for-success: true
